@@ -1,5 +1,11 @@
 FROM node:8.9
 
+# https://github.com/chef-cookbooks/mysql/issues/286#issuecomment-70860827
+RUN apt-get -y install locales \
+  && echo 'en_US.UTF-8 UTF-8'>>/etc/locale.gen \
+  && locale-gen
+ENV LANG en_US.UTF-8
+
 ENV RUBY_MAJOR 2.1
 ENV RUBY_VERSION 2.1.5
 ENV RUBY_DOWNLOAD_SHA256 22ba1eb8d475c9ed7e0541418d86044c1ea4c093ab79c300c38fc0f721afe9a3
